@@ -19,21 +19,95 @@ import joblib
 
 df = pd.read_csv("dataset.csv")
 
+# # Keep only needed columns
+# df = df[['title', 'text', 'type']]
+#
+# # Remove missing values
+# df = df.dropna()
 # Keep only needed columns
-df = df[['title', 'text', 'type']]
+df = df[['text', 'spam']]
 
 # Remove missing values
 df = df.dropna()
+
+# Remove duplicates
+df = df.drop_duplicates()
+
+print("\nClass Distribution:\n")
+print(df['spam'].value_counts())
+
+# Remove missing values
+# df = df.dropna()
+
+# Remove duplicate rows
+# df = df.drop_duplicates()
+
+# Check class distribution
+# print("\nClass Distribution:\n")
+# print(df['type'].value_counts())
+
+# Balance dataset
+min_count = df['spam'].value_counts().min()
+
+balanced_df = df.groupby('spam').sample(
+    n=min_count,
+    random_state=42
+)
+
+df = balanced_df.reset_index(drop=True)
+
+print("\nBalanced Dataset:\n")
+print(df['spam'].value_counts())
 
 # =========================
 # COMBINE TITLE + TEXT
 # =========================
 
-df['message'] = df['title'] + " " + df['text']
+# df['message'] = df['title'] + " " + df['text']
+import re
+import nltk
+
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+
+# nltk.download('stopwords')
+nltk.download('stopwords', quiet=True)
+
+ps = PorterStemmer()
+stop_words = set(stopwords.words('english'))
+
+# =========================
+# TEXT CLEANING FUNCTION
+# =========================
+
+def clean_text(text):
+
+    text = text.lower()
+
+    text = re.sub(r'[^a-zA-Z]', ' ', text)
+
+    words = text.split()
+
+    words = [
+        ps.stem(word)
+        for word in words
+        # if word not in stopwords.words('english')
+        if word not in stop_words
+    ]
+
+    return " ".join(words)
+
+# =========================
+# COMBINE & CLEAN TEXT
+# =========================
+
+df['message'] =df['text']
+
+df['message'] = df['message'].apply(clean_text)
 
 # INPUT & OUTPUT
 X = df['message']
-y = df['type']
+y = df['spam']
 
 # =========================
 # TF-IDF VECTORIZATION
@@ -41,8 +115,10 @@ y = df['type']
 
 vectorizer = TfidfVectorizer(
     stop_words='english',
+    # stop_words = set(stopwords.words('english')),
     max_features=5000
 )
+ps = PorterStemmer()
 
 X = vectorizer.fit_transform(X).toarray()
 
@@ -50,9 +126,9 @@ X = vectorizer.fit_transform(X).toarray()
 # LABEL ENCODING
 # =========================
 
-encoder = LabelEncoder()
-
-y = encoder.fit_transform(y)
+# encoder = LabelEncoder()
+#
+# y = encoder.fit_transform(y)
 
 # =========================
 # TRAIN TEST SPLIT
@@ -124,7 +200,7 @@ model.save("email_classifier_model.h5")
 
 joblib.dump(vectorizer, "vectorizer.pkl")
 
-joblib.dump(encoder, "encoder.pkl")
+# joblib.dump(encoder, "encoder.pkl")
 
 print("\nModel Saved Successfully!")
 
@@ -134,7 +210,9 @@ print("\nModel Saved Successfully!")
 
 def classify_email(email):
 
-    vec = vectorizer.transform([email]).toarray()
+    cleaned_email = clean_text(email)
+
+    vec = vectorizer.transform([cleaned_email]).toarray()
 
     pred = model.predict(vec)
 
