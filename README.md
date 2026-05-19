@@ -14,7 +14,7 @@ This project combines Natural Language Processing and Computer Vision into one u
 * Dataset Balancing and Duplicate Removal
 * Confusion Matrix & Performance Visualization
 * Accuracy & Loss Graph Generation
-* YOLOv8 Object Detection for Images
+* YOLOv8 Object Detection for Multiple Images
 * Automated Image + Text Classification Pipeline
 * Saved Trained Models for Reusability
 
@@ -59,6 +59,7 @@ YOLOv8 is integrated for real-time image object detection.
 Example detections:
 
 * Dog
+* Cat
 * Car
 * Person
 * Laptop
@@ -98,7 +99,10 @@ MultiModal-AI-System/
 ├── requirements.txt
 ├── accuracy_graph.png
 ├── loss_graph.png
-├── output.jpg
+├── dog.png
+├── cat.png
+├── output_dog.png
+├── output_cat.png
 ├── email_classifier_model.h5
 ├── vectorizer.pkl
 └── README.md
