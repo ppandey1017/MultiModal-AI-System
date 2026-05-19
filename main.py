@@ -7,4 +7,5 @@ result = classify_email(email)
 
 print("Email Category:", result)
 
-detect_objects("text.png")
+detect_objects("dog.png")
+detect_objects("cat.png")

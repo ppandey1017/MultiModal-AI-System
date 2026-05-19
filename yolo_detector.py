@@ -11,6 +11,7 @@ def detect_objects(image_path):
     results[0].show()
 
     # SAVE OUTPUT
-    results[0].save(filename="output.jpg")
+    # results[0].save(filename="output.jpg")
+    results[0].save(filename=f"output_{image_path}")
 
     print("Detection Completed")
