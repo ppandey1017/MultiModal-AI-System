@@ -9,8 +9,9 @@ This project combines Natural Language Processing and Computer Vision into one u
 ## Features
 
 * Email Spam Detection using NLP & TensorFlow
-* TF-IDF Vectorization & Text Preprocessing
-* Real Dataset Training with Accuracy Evaluation
+* TF-IDF Vectorization & Advanced Text Preprocessing
+* Real-World Large-Scale Spam Dataset Training
+* Dataset Balancing and Duplicate Removal
 * Confusion Matrix & Performance Visualization
 * Accuracy & Loss Graph Generation
 * YOLOv8 Object Detection for Images
@@ -30,16 +31,24 @@ This project combines Natural Language Processing and Computer Vision into one u
 * OpenCV
 * Scikit-learn
 * Matplotlib
+* NLTK
 
 ---
 
 ## Model Performance
 
-* Real email spam dataset used for training
+* Trained on a real-world spam dataset containing 5000+ email samples
 * Train/Test Split implemented
+* Dataset Balancing applied for better prediction fairness
 * Accuracy Evaluation added
 * Confusion Matrix generated
 * Training Accuracy & Loss Graphs visualized
+* NLP preprocessing includes:
+
+  * Stopword Removal
+  * Text Cleaning
+  * Lowercase Conversion
+  * Stemming
 
 ---
 
@@ -90,6 +99,8 @@ MultiModal-AI-System/
 ├── accuracy_graph.png
 ├── loss_graph.png
 ├── output.jpg
+├── email_classifier_model.h5
+├── vectorizer.pkl
 └── README.md
 ```
 
@@ -109,5 +120,6 @@ MultiModal-AI-System/
 
 Made with ❤️ by Priya Pandey.
 
-Interested in AI, Machine Learning, NLP, and Full-Stack Development. 
+Interested in AI, Machine Learning, NLP, and Full-Stack Development.
+
 Let’s connect on [LinkedIn](https://www.linkedin.com/in/priya-pandey-4b513b288/)
