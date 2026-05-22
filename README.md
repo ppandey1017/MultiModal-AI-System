@@ -1,8 +1,8 @@
 # MultiModal-AI-System
 
-An AI-powered multi-modal classification system built using TensorFlow, NLP, CNN, and YOLO for email spam detection and image object detection.
+An AI-powered multi-modal classification system built using TensorFlow, NLP, CNN, YOLO, and Flask for email spam detection and image object detection.
 
-This project combines Natural Language Processing and Computer Vision into one unified AI automation pipeline.
+This project combines Natural Language Processing and Computer Vision into one unified AI web application pipeline.
 
 ---
 
@@ -15,6 +15,9 @@ This project combines Natural Language Processing and Computer Vision into one u
 * Confusion Matrix & Performance Visualization
 * Accuracy & Loss Graph Generation
 * YOLOv8 Object Detection for Multiple Images
+* Flask-Based Interactive AI Web Application
+* Modern Responsive Frontend UI
+* Real-Time Detection Preview
 * Automated Image + Text Classification Pipeline
 * Saved Trained Models for Reusability
 
@@ -23,6 +26,7 @@ This project combines Natural Language Processing and Computer Vision into one u
 ## Technologies Used
 
 * Python
+* Flask
 * TensorFlow / Keras
 * NLP (Natural Language Processing)
 * TF-IDF Vectorization
@@ -32,6 +36,8 @@ This project combines Natural Language Processing and Computer Vision into one u
 * Scikit-learn
 * Matplotlib
 * NLTK
+* HTML
+* CSS
 
 ---
 
@@ -49,6 +55,17 @@ This project combines Natural Language Processing and Computer Vision into one u
   * Text Cleaning
   * Lowercase Conversion
   * Stemming
+
+---
+
+## Web Application
+
+The project includes a Flask-based AI website where users can:
+
+* Enter email text for spam prediction
+* Upload images for YOLO object detection
+* View detected image outputs directly on the website
+* Experience a responsive modern UI
 
 ---
 
@@ -77,10 +94,16 @@ Detected output images are automatically generated after prediction.
 pip install -r requirements.txt
 ```
 
-### Run the project
+### Run the Flask website
 
 ```bash
-python main.py
+python app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5000
 ```
 
 ---
@@ -90,11 +113,15 @@ python main.py
 ```text
 MultiModal-AI-System/
 │
+├── app.py
 ├── main.py
 ├── text_classifier.py
 ├── yolo_detector.py
 ├── cnn_classifier.py
 ├── automation.py
+├── templates/
+│   └── index.html
+├── static/
 ├── dataset.csv
 ├── requirements.txt
 ├── accuracy_graph.png
@@ -112,11 +139,11 @@ MultiModal-AI-System/
 
 ## Future Improvements
 
-* Flask-based Web Interface
 * Higher Accuracy NLP Models
 * LSTM / BERT Integration
 * Live Camera Object Detection
 * Real-time AI Dashboard
+* Cloud Deployment
 
 ---
 
