@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MultiModal AI System</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:40px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #f7e8ea,
+                #edf3ff,
+                #eefbf3
+            );
+        }
+
+        .container{
+
+            width:100%;
+            max-width:800px;
+
+            background:#ffffffdd;
+
+            backdrop-filter: blur(10px);
+
+            border-radius:30px;
+
+            padding:45px;
+
+            box-shadow:
+            0 10px 40px rgba(0,0,0,0.08);
+
+            animation:fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        h1{
+
+            text-align:center;
+
+            font-size:48px;
+
+            margin-bottom:35px;
+
+            color:#222;
+        }
+
+        form label{
+
+            display:block;
+
+            margin-bottom:12px;
+
+            margin-top:25px;
+
+            font-size:25px;
+
+            font-weight:bold;
+
+            color:#222;
+        }
+
+        textarea{
+
+            width:100%;
+
+            max-width:100%;
+
+            height:180px;
+
+            border:none;
+
+            outline:none;
+
+            border-radius:18px;
+
+            padding:20px;
+
+            font-size:20px;
+
+            background:#ffffff;
+
+            box-shadow:
+            inset 0 0 0 1px #ddd;
+        }
+
+        input[type="file"]{
+
+            margin-top:10px;
+
+            font-size:16px;
+        }
+
+        button{
+
+            width:100%;
+
+            margin-top:35px;
+
+            border:none;
+
+            padding:18px;
+
+            border-radius:18px;
+
+            font-size:20px;
+
+            font-weight:bold;
+
+            color:white;
+
+            cursor:pointer;
+
+            background:
+            linear-gradient(
+                135deg,
+                #ff5f7e,
+                #ff7b72
+            );
+
+            transition:0.3s;
+
+            box-shadow:
+            0 10px 20px rgba(255,100,120,0.25);
+        }
+
+        button:hover{
+
+            transform:translateY(-2px);
+
+            opacity:0.95;
+        }
+
+        .result-box{
+
+            margin-top:30px;
+
+            padding:25px;
+
+            border-radius:20px;
+
+            background:#f8f8ff;
+
+            border-left:6px solid #7c6cff;
+        }
+
+        .result-box h3{
+
+            font-size:24px;
+
+            margin-bottom:10px;
+
+            color:#222;
+        }
+
+        .result-box p{
+
+            font-size:18px;
+
+            color:#555;
+        }
+
+        .image-box{
+
+            border-left:6px solid #43c465;
+
+            background:#f4fff7;
+        }
+
+        .footer{
+
+            text-align:center;
+
+            margin-top:40px;
+
+            font-size:16px;
+
+            color:#666;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 MultiModal AI System</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Email Text</label>
+
+        <textarea
+            name="email"
+            placeholder="Enter email text here..."
+        ></textarea>
+
+        <label>Upload Image</label>
+
+        <input type="file" name="image">
+
+        <button type="submit">
+            Analyze
+        </button>
+
+    </form>
+
+    {% if email_result %}
+
+    <div class="result-box">
+
+        <h3>📧 Email Classification</h3>
+
+        <p>{{ email_result }}</p>
+
+        <script>
+            window.history.replaceState({}, document.title, "/");
+        </script>
+
+    </div>
+
+    {% endif %}
+
+    {% if image_result %}
+
+    <div class="result-box image-box">
+
+        <h3>🖼️ Image Detection</h3>
+
+        <img
+            src="{{ url_for('static', filename=image_result) }}"
+            style="
+                width:70%;
+                max-width:350px;
+                display:block;
+                margin:15px auto 0;
+                border-radius:15px;
+                box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            "
+        >
+
+        <script>
+            window.history.replaceState({}, document.title, "/");
+        </script>
+
+    </div>
+
+    {% endif %}
+
+    <div class="footer">
+        Made with ❤️ by Priya Pandey
+    </div>
+
+</div>
+
+</body>
+</html>
