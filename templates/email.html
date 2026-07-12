@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Email Detection</title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+    <style>
+      /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        background: #f5f7fb;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 260px;
+        background: white;
+        padding: 30px 20px;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #5b5fc7;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 15px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 10px;
+      }
+
+      .sidebar a:hover {
+        background: #5b5fc7;
+        color: white;
+      }
+
+      .main {
+        flex: 1;
+        padding: 50px;
+      } */
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      .email-box {
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 120px;
+
+        padding: 15px;
+
+        border-radius: 10px;
+
+        border: 1px solid #ccc;
+
+        resize: none;
+
+        font-size: 16px;
+      }
+
+      .buttons {
+        display: flex;
+
+        gap: 15px;
+
+        margin-top: 20px;
+      }
+
+      .btn {
+        padding: 12px 25px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        font-size: 16px;
+
+        color: white;
+      }
+
+      #addBtn {
+        background: #4caf50;
+      }
+
+      #analyzeBtn {
+        background: #5b5fc7;
+      }
+
+      .results-container{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:20px;
+
+}
+
+.result-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.result-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card-header{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#5b5fc7;
+
+    margin-bottom:15px;
+
+}
+
+.email-preview{
+    color:#666;
+    line-height:1.6;
+    font-size:15px;
+    margin-bottom:18px;
+}
+
+.prediction{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.spam{
+    color:#e53935;
+}
+.notspam{
+    color:#2e7d32;
+}
+
+    </style>
+  </head>
+
+  <body>
+    <button id="themeBtn" class="theme-btn">
+      <i class="fas fa-moon"></i>
+    </button>
+    <!-- <div class="sidebar">
+      <div class="logo">🤖 MultiModal AI</div>
+
+      <a href="/">🏠 Dashboard</a>
+      <a href="/email">📧 Email Detection</a>
+      <a href="/image">🖼 Image Detection</a>
+      <a href="#">🕘 History</a>
+      <a href="/about">ℹ About</a>
+    </div> -->
+    <div class="sidebar">
+      <div class="logo"><i class="fas fa-robot"></i> MultiModal AI</div>
+      <a href="/"><i class="fas fa-house"></i> Dashboard</a>
+      <a href="/email"><i class="fas fa-envelope"></i> Email Detection</a>
+      <a href="/image"><i class="fas fa-image"></i> Image Detection</a>
+      <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+    </div>
+
+    <div class="main">
+      <h1>Email Spam Detection</h1>
+
+      <form method="post">
+        <div id="emails">
+          <div class="email-box">
+            <textarea name="email" placeholder="Enter email..."></textarea>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn" id="addBtn" onclick="addEmail()">
+            + Add Email
+          </button>
+
+          <button type="submit" class="btn" id="analyzeBtn">Analyze All</button>
+        </div>
+        {% if results %}
+
+<h2 style="margin-top:40px; color:#333;">
+    Analysis Results
+</h2>
+
+<div class="results-container">
+
+{% for result in results %}
+
+<div class="result-card">
+
+    <div class="card-header">
+
+        📧 Email {{ loop.index }}
+
+    </div>
+
+    <div class="card-body">
+
+        <p class="email-preview">
+
+            {{ result.email[:120] }}
+
+            {% if result.email|length > 120 %}
+            ...
+            {% endif %}
+
+        </p>
+
+        <div class="prediction">
+
+            {% if result.prediction == "spam" %}
+
+                <span class="spam">
+
+                    🔴 Spam
+
+                </span>
+
+            {% else %}
+
+                <span class="notspam">
+
+                    🟢 Not Spam
+
+                </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+      </form>
+    </div>
+
+    <script>
+      let count = 1;
+
+      function addEmail() {
+        if (count >= 10) {
+          alert("Maximum 10 emails allowed.");
+
+          return;
+        }
+
+        count++;
+
+        const div = document.createElement("div");
+
+        div.className = "email-box";
+
+        div.innerHTML = `
+
+<textarea
+name="email"
+placeholder="Enter email ${count}..."
+></textarea>
+
+`;
+
+        document.getElementById("emails").appendChild(div);
+      }
+
+
+      const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+}
+
+themeBtn.onclick = function(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+
+    }
+
+};
+    </script>
+  </body>
+</html>

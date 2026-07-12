@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>About</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+      /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        background: #f5f7fb;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 260px;
+        background: white;
+        padding: 30px 20px;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        color: #5b5fc7;
+        margin-bottom: 40px;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 15px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 10px;
+      }
+
+      .sidebar a:hover {
+        background: #5b5fc7;
+        color: white;
+      }
+
+      .main {
+        flex: 1;
+        padding: 50px;
+      } */
+
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        color: #222;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin-top: 35px;
+        margin-bottom: 15px;
+        color: #5b5fc7;
+      }
+
+      p {
+        color: #555;
+        line-height: 1.8;
+        font-size: 17px;
+      }
+
+      ul {
+        margin-left: 25px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin-bottom: 12px;
+        color: #444;
+        font-size: 17px;
+      }
+
+      .tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 15px;
+      }
+
+      .tag {
+        background: #eef2ff;
+        color: #5b5fc7;
+        padding: 10px 18px;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #777;
+      }
+        .social-links{
+            display:flex;
+            justify-content:center;
+        gap:20px;
+            margin-top:25px;
+        }
+        .social-btn{
+            text-decoration:none;
+            padding:12px 22px;
+            border-radius:12px;
+            font-size:16px;
+            font-weight:600;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            transition:.3s;
+            color:white;
+        }
+        .github{
+            background:#24292e;
+        }
+        .linkedin{
+            background:#0A66C2;
+        }
+        .social-btn:hover{
+            transform:translateY(-3px);
+            opacity:.9;
+        }
+
+    </style>
+  </head>
+
+  <!-- <script>
+
+const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+}
+
+themeBtn.onclick = function(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+
+    }
+
+};
+
+</script> -->
+
+  <body>
+    <button id="themeBtn" class="theme-btn">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="sidebar">
+      <div class="logo"><i class="fas fa-robot"></i> MultiModal AI</div>
+      <a href="/"><i class="fas fa-house"></i> Dashboard</a>
+      <a href="/email"><i class="fas fa-envelope"></i> Email Detection</a>
+      <a href="/image"><i class="fas fa-image"></i> Image Detection</a>
+      <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+    </div>
+
+    <div class="main">
+      <div class="card">
+        <h1><i class="fas fa-robot"></i> About MultiModal AI System</h1>
+
+        <p>
+          MultiModal AI System is an intelligent web application that combines
+          Natural Language Processing and Computer Vision into a single
+          platform. Users can classify multiple email messages for spam
+          detection and perform object detection on multiple images using a
+          clean and interactive dashboard.
+        </p>
+
+        <h2><i class="fas fa-star"></i> Current Features</h2>
+
+        <ul>
+          <li>Batch Email Spam Detection (Up to 10 Emails)</li>
+
+          <li>Batch Image Object Detection (Up to 10 Images)</li>
+
+          <li>YOLOv8 based Real-Time Object Detection</li>
+
+          <li>Interactive Dashboard UI</li>
+
+          <li>Responsive Web Interface using Flask</li>
+        </ul>
+
+        <h2><i class="fas fa-screwdriver-wrench"></i> Technologies Used</h2>
+
+        <div class="tech">
+          <div class="tag">Python</div>
+
+          <div class="tag">Flask</div>
+
+          <div class="tag">TensorFlow</div>
+
+          <div class="tag">YOLOv8</div>
+
+          <div class="tag">OpenCV</div>
+
+          <div class="tag">Scikit-learn</div>
+
+          <div class="tag">NLTK</div>
+
+          <div class="tag">HTML</div>
+
+          <div class="tag">CSS</div>
+
+          <div class="tag">JavaScript</div>
+        </div>
+
+        <!-- <h2>🚀 Future Enhancements</h2>
+
+        <ul>
+          <li>OCR (Image to Text)</li>
+
+          <li>Speech Recognition</li>
+
+          <li>Emotion Detection</li>
+
+          <li>Plant Disease Detection</li>
+
+          <li>Additional AI Modules</li>
+        </ul> -->
+
+        <div class="footer">
+          <p>Made with ❤️ by <b>Priya Pandey</b></p>
+
+          <div class="social-links">
+            <a
+              href="https://github.com/ppandey1017"
+              target="_blank"
+              class="social-btn github"
+            >
+              <i class="fab fa-github"></i>
+
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/priya-pandey-4b513b288/"
+              target="_blank"
+              class="social-btn linkedin"
+            >
+              <i class="fab fa-linkedin"></i>
+
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+}
+
+themeBtn.onclick = function(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+
+    }
+
+};
+
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>MultiModal AI Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+      .heading {
+        font-size: 38px;
+
+        color: #333;
+
+        margin-bottom: 40px;
+      }
+
+      /* Cards */
+
+      .cards {
+        display: flex;
+
+        gap: 30px;
+
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 320px;
+
+        background: white;
+
+        padding: 30px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+      }
+
+      .card h2 {
+        margin-bottom: 15px;
+
+        color: #444;
+      }
+
+      .card p {
+        color: #666;
+
+        margin-bottom: 25px;
+      }
+
+      .card button {
+        width: 100%;
+
+        padding: 12px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        color: white;
+
+        background: #5b5fc7;
+
+        font-size: 16px;
+      }
+
+      .card button:hover {
+        background: #474bb8;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <button id="themeBtn" class="theme-btn">
+        <i class="fas fa-moon"></i>
+    </button>
+    <!-- <div class="sidebar">
+      <div class="logo">🤖 MultiModal AI</div>
+
+      <a href="/">🏠 Dashboard</a>
+
+      <a href="/email">📧 Email Detection</a>
+
+      <a href="/image">🖼 Image Detection</a>
+
+      <!-- <a href="#">🕘 History</a> 
+
+      <a href="/about">ℹ About</a>
+    </div> -->
+    <div class="sidebar">
+      <div class="logo"><i class="fas fa-robot"></i> MultiModal AI</div>
+      <a href="/"><i class="fas fa-house"></i> Dashboard</a>
+      <a href="/email"><i class="fas fa-envelope"></i> Email Detection</a>
+      <a href="/image"><i class="fas fa-image"></i> Image Detection</a>
+      <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+    </div>
+
+    <div class="main">
+      <div class="heading">Welcome Back 👋</div>
+
+      <div class="cards">
+        <div class="card">
+          <h2><i class="fas fa-envelope"></i> Email Detection</h2>
+
+          <p>Detect whether emails are spam or not using TensorFlow and NLP.</p>
+
+          <button onclick="location.href = '/email'">Open</button>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-image"></i> Image Detection</h2>
+
+          <p>Detect multiple objects in uploaded images using YOLOv8.</p>
+
+          <button onclick="location.href = '/image'">Open</button>
+        </div>
+      </div>
+    </div>
+
+    <script>const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+}
+
+themeBtn.onclick = function(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+
+    }
+
+};
+</script>
+  </body>
+</html>
