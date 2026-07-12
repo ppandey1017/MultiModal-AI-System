@@ -1,106 +1,187 @@
-# MultiModal-AI-System
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=30&duration=3500&pause=1000&color=6C63FF&center=true&vCenter=true&width=900&lines=MultiModal+AI+Detection+Platform;Email+Spam+Detection+using+TensorFlow;YOLOv8+Object+Detection;Flask+%7C+NLP+%7C+Computer+Vision" />
+</p>
 
-An AI-powered multi-modal classification system built using TensorFlow, NLP, CNN, YOLO, and Flask for email spam detection and image object detection.
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,flask,tensorflow,opencv,html,css,js,git,github,vscode" />
+</p>
 
-This project combines Natural Language Processing and Computer Vision into one unified AI web application pipeline.
-
----
-
-## Features
-
-* Email Spam Detection using NLP & TensorFlow
-* TF-IDF Vectorization & Advanced Text Preprocessing
-* Real-World Large-Scale Spam Dataset Training
-* Dataset Balancing and Duplicate Removal
-* Confusion Matrix & Performance Visualization
-* Accuracy & Loss Graph Generation
-* YOLOv8 Object Detection for Multiple Images
-* Flask-Based Interactive AI Web Application
-* Modern Responsive Frontend UI
-* Real-Time Detection Preview
-* Automated Image + Text Classification Pipeline
-* Saved Trained Models for Reusability
+<p align="center">
+  <img src="https://img.shields.io/badge/Accuracy-98.48%25-success?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Framework-Flask-black?style=for-the-badge&logo=flask"/>
+  <img src="https://img.shields.io/badge/YOLOv8-Object%20Detection-purple?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/TensorFlow-NLP-orange?style=for-the-badge&logo=tensorflow"/>
+</p>
 
 ---
 
-## Technologies Used
+# MultiModal AI Detection Platform
 
-* Python
-* Flask
-* TensorFlow / Keras
-* NLP (Natural Language Processing)
-* TF-IDF Vectorization
-* CNN (Convolutional Neural Networks)
-* YOLOv8
-* OpenCV
-* Scikit-learn
-* Matplotlib
-* NLTK
-* HTML
-* CSS
+A Flask-based AI web application that combines **Natural Language Processing (NLP)** and **Computer Vision** into a unified platform. It enables users to perform **Email Spam Detection** and **YOLOv8-based Object Detection** through a clean, responsive, and interactive dashboard with support for **batch analysis**.
 
 ---
 
-## Model Performance
+## <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" width="22"> Features
 
-* Trained on a real-world spam dataset containing 5000+ email samples
-* Train/Test Split implemented
-* Dataset Balancing applied for better prediction fairness
-* Accuracy Evaluation added
-* Confusion Matrix generated
-* Training Accuracy & Loss Graphs visualized
-* NLP preprocessing includes:
+### Email Spam Detection
 
-  * Stopword Removal
-  * Text Cleaning
-  * Lowercase Conversion
-  * Stemming
+- Detect spam and non-spam emails using a TensorFlow-based NLP model.
+- Analyze **up to 10 emails** in a single request.
+- Advanced preprocessing including:
+  - TF-IDF Vectorization
+  - Text Cleaning
+  - Lowercase Conversion
+  - Stopword Removal
+  - Stemming
+- Input validation for invalid email text.
 
----
+### Image Object Detection
 
-## Web Application
+- Detect multiple objects using **YOLOv8**.
+- Analyze **up to 10 images** simultaneously.
+- Generate annotated detection images automatically.
+- Display **per-image object summaries** (e.g., Person ×3, Dog ×1).
+- Supports multiple object detection within the same image.
 
-The project includes a Flask-based AI website where users can:
+### User Interface
 
-* Enter email text for spam prediction
-* Upload images for YOLO object detection
-* View detected image outputs directly on the website
-* Experience a responsive modern UI
-
----
-
-## Object Detection
-
-YOLOv8 is integrated for real-time image object detection.
-
-Example detections:
-
-* Dog
-* Cat
-* Car
-* Person
-* Laptop
-* Chair
-
-Detected output images are automatically generated after prediction.
+- Modern Flask-based dashboard.
+- Dedicated pages for:
+  - Dashboard
+  - Email Detection
+  - Image Detection
+  - About
+- Light/Dark Mode with theme persistence.
+- Responsive and user-friendly design.
 
 ---
 
-## How to Run
+## <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" width="22"> Technologies Used
 
-### Install dependencies
+| Category | Technologies |
+|----------|--------------|
+| Programming | Python |
+| Backend | Flask |
+| Deep Learning | TensorFlow / Keras |
+| Computer Vision | YOLOv8, OpenCV |
+| NLP | TF-IDF, NLTK |
+| Machine Learning | Scikit-learn |
+| Frontend | HTML, CSS, JavaScript |
+
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="22"> Model Performance
+
+- Trained on a **real-world dataset of approximately 5.9K emails**.
+- Removed duplicate records and balanced the dataset before training.
+- Implemented Train-Test Split for evaluation.
+- Achieved **98.48% Test Accuracy**.
+- Generated:
+  - Accuracy Graph
+  - Loss Graph
+  - Confusion Matrix
+- Saved trained model and TF-IDF vectorizer for efficient inference.
+
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" width="22"> Application Preview
+
+> Replace these placeholders with screenshots of your application.
+
+| Dashboard |
+|-----------|
+| ![](screenshots/dashboard.png) |
+
+| Email Detection |
+|-----------------|
+| ![](screenshots/email.png) |
+
+| Image Detection |
+|-----------------|
+| ![](screenshots/image.png) |
+
+| Detection Result |
+|------------------|
+| ![](screenshots/result.png) |
+
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/5956/5956592.png" width="22"> Project Structure
+
+```text
+MultiModal-AI-Detection-Platform/
+│
+├── app.py
+├── train_model.py
+├── text_classifier.py
+├── yolo_detector.py
+├── requirements.txt
+├── dataset.csv
+│
+├── models/
+│   ├── email_classifier_model.h5
+│   └── vectorizer.pkl
+│
+├── static/
+│   ├── style.css
+│   ├── script.js
+│   └── ...
+│
+├── templates/
+│   ├── dashboard.html
+│   ├── email.html
+│   ├── image.html
+│   └── about.html
+│
+└── README.md
+```
+
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" width="22"> Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/ppandey1017/MultiModal-AI-Detection-Platform.git
+```
+
+Move into the project directory
+
+```bash
+cd MultiModal-AI-Detection-Platform
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the Flask website
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" width="22"> Train the Email Model
+
+```bash
+python train_model.py
+```
+
+This will:
+
+- Train the spam detection model.
+- Save the trained model.
+- Save the TF-IDF vectorizer.
+- Generate accuracy and loss graphs.
+
+---
+
+## <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" width="22"> Run the Application
 
 ```bash
 python app.py
 ```
 
-Then open:
+Open your browser and visit
 
 ```text
 http://127.0.0.1:5000
@@ -108,49 +189,55 @@ http://127.0.0.1:5000
 
 ---
 
-## Project Structure
+## <img src="https://cdn-icons-png.flaticon.com/512/2721/2721268.png" width="22"> Workflow
 
-```text
-MultiModal-AI-System/
-│
-├── app.py
-├── main.py
-├── text_classifier.py
-├── yolo_detector.py
-├── cnn_classifier.py
-├── automation.py
-├── templates/
-│   └── index.html
-├── static/
-├── dataset.csv
-├── requirements.txt
-├── accuracy_graph.png
-├── loss_graph.png
-├── dog.png
-├── cat.png
-├── output_dog.png
-├── output_cat.png
-├── email_classifier_model.h5
-├── vectorizer.pkl
-└── README.md
-```
+### Email Detection
+
+1. Open the Email Detection page.
+2. Enter one or more email messages.
+3. Click **Analyze All**.
+4. View spam/non-spam predictions.
+
+### Image Detection
+
+1. Upload one or more images.
+2. Click **Analyze All**.
+3. View annotated output images.
+4. Check the object summary generated for each uploaded image.
 
 ---
 
-## Future Improvements
+## <img src="https://cdn-icons-png.flaticon.com/512/5956/5956595.png" width="22"> Future Enhancements
 
-* Higher Accuracy NLP Models
-* LSTM / BERT Integration
-* Live Camera Object Detection
-* Real-time AI Dashboard
-* Cloud Deployment
+- OCR (Image to Text)
+- Speech-to-Text
+- Image Caption Generation
+- Face & Emotion Detection
+- Plant Disease Detection
+- Cloud Deployment
+- Additional AI modules
 
 ---
 
-## Author
+## <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" width="22"> Author
 
-Made with ❤️ by Priya Pandey.
+**Priya Pandey**
 
-Interested in AI, Machine Learning, NLP, and Full-Stack Development.
+B.Tech (Electronics & Communication Engineering with AI)  
+Indira Gandhi Delhi Technical University for Women (IGDTUW)
 
-Let’s connect on [LinkedIn](https://www.linkedin.com/in/priya-pandey-4b513b288/)
+<p>
+<a href="https://github.com/ppandey1017">
+<img src="https://skillicons.dev/icons?i=github" height="45"/>
+</a>
+
+<a href="https://www.linkedin.com/in/priya-pandey-4b513b288/">
+<img src="https://skillicons.dev/icons?i=linkedin" height="45"/>
+</a>
+</p>
+
+---
+
+<p align="center">
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&size=22&duration=3500&pause=1000&color=6C63FF&center=true&vCenter=true&width=650&lines=Thank+you+for+visiting+my+project!;If+you+liked+it%2C+please+consider+giving+it+a+Star!" />
+</p>
